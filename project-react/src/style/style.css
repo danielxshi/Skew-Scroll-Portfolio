@@ -259,7 +259,6 @@ h2{
     margin: 20vh 0;
     -webkit-text-stroke: 1px #bebebe;
     -webkit-text-fill-color: #312E37;
-    direction: rtl;
 }
 
 @-webkit-keyframes marquee{
