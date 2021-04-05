@@ -177,7 +177,6 @@ footer{
 nav{
     /* position: fixed; */
     max-width: 1240px;
-    margin: 1rem auto;
     box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
     height: auto;
 }
@@ -308,14 +307,27 @@ h2{
 }
 
 header{
-    /* z-index: 99; */
-    /* position: relative; */
+    z-index: 99;
+    position: relative;
+}
+
+#myLinks{
+    display: none;
+    max-height: 60vh;
+    transition: max-height 0.3s ease;
+}
+
+#myLinks.hidden{
+    max-height: 0px;
 }
 
 
 
 /* media queries */
 @media only screen and (min-width: 72em) {
+    nav{    
+        margin: 1rem auto;
+    }
     
     header{
         z-index: 99;
@@ -381,7 +393,7 @@ header{
 }
 
 @media only screen and (max-width: 72em) {
-    .desktop-nav-container {
+    .mobile-nav-container {
         background-color: rgb(49,46,55, 1);
         display: block;
     }

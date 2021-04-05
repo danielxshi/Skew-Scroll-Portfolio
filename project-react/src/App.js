@@ -1,14 +1,11 @@
 import React, { useEffect, useRef } from "react";
 
 //extract assets into separate folder
-import "./App.scss";
-import hamburger from"./images/icons/nav-mob.svg";
 import track from './images/moment-track2.png';
 import cliq from './images/cliq2.png';
 import bosstep from './images/boss.png';
 import './style/style.css';
 import './style/grid.css';
-import {Animated} from "react-animated-css";
 
 // end of extraction
 
@@ -24,7 +21,7 @@ function App() {
   // Ref for parent div and scrolling div
   const app = useRef();
   const scrollContainer = useRef();
-  const bodyHeight = useRef();
+  var navHeight = useRef();
 
   // Configs
   const data = {
@@ -33,8 +30,7 @@ function App() {
     previous: 0,
     rounded: 0
   };
-
-
+  
   // Run scrollrender once page is loaded.
   useEffect(() => {
     requestAnimationFrame(() => skewScrolling());
@@ -44,13 +40,16 @@ function App() {
   useEffect(() => {
     setBodyHeight();
   }, [size.height]);
+  
+  //Set the height of the header 
 
   //Set the height of the body to the height of the scrolling div
-  const setBodyHeight = () => {
+  var setBodyHeight = () => {
     document.body.style.height = `${
-      bodyHeight.current.getBoundingClientRect().height
+      scrollContainer.current.getBoundingClientRect().height 
     }px`;
   };
+
 
   // Scrolling
   const skewScrolling = () => {
@@ -68,7 +67,7 @@ function App() {
     const skew = velocity * 7.5;
 
     //Assign skew and smooth scrolling to the scroll container
-    scrollContainer.current.style.transform = `translate3d(0, -${data.rounded}px, 0) skewY(${skew}deg)`;
+    scrollContainer.current.style.transform = `translateY(-${data.rounded}px) skewY(${skew}deg)`;
 
     //loop vai raf
     requestAnimationFrame(() => skewScrolling());
@@ -79,11 +78,11 @@ function App() {
 
   return (
     <div ref={app} className="App">
-        <body ref={bodyHeight}>
+      {/* <Navbar ref={navHeight} /> */}
 
-          <Navbar />
+          <div ref={scrollContainer}>
 
-
+            <Navbar ref={navHeight} />
             {/* <nav className="mobile-nav-container">
               <ul id="hamburger-links">
                 <li><a id="nav-on" href="index.html">design</a></li>
@@ -156,7 +155,7 @@ function App() {
                     </h2>
                     <h3>- Design Goal</h3>
                     <p className="">Gamified exercise app geared towards kids who can choose heroes to play as, where they must walk and be physically active to develop and interact with their hero.</p>
-                    <a onMouseOver={console.log("hovering button")} className="primary-btn" href="">View Process</a>
+                    <a className="primary-btn" href="">View Process</a>
                   </div>
                 
                 <div className="project-tool-wrapper">
@@ -307,7 +306,7 @@ function App() {
           </footer>
           </div>
           {/* end skew scroll */}
-        </body>
+        </div>
     </div>
   );
 }

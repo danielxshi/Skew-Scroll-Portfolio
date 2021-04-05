@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import '../style/style.css';
-import './App.scss';
+import '../style/App.scss';
 import hamburger from '../images/icons/nav-mob.svg';
 
 const Navbar=() => {
@@ -25,33 +25,40 @@ const Navbar=() => {
     x.push('scrolled');
   }
 
+  function myFunction() {
+    var x = document.getElementById("myLinks");
+    if (x.style.display !="none") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+    }
+  }
+
   return (
     <header className={x.join(" ")}>
         <div className="logo">
-          <img id="hamburger-cta" src={hamburger} alt="Logo" title="Logo" />
+          <a>
+            <img onClick={myFunction} id="hamburger-cta" src={hamburger} alt="Logo" title="Logo" />
+          </a>
         </div>
 
-        <nav className=" navigation">
+        <nav className="desktop-nav-container">
             <ul>
-            <li><a id="nav-on" href="index.html">design</a></li>
-            <li><a href="contact.html">contact</a></li>
-            <li><a href="resume.html">resume</a></li>
-            <li><a href="camera.html">photo/video</a></li>
+              <li><a id="nav-on" href="index.html">design</a></li>
+              <li><a href="contact.html">contact</a></li>
+              <li><a href="resume.html">resume</a></li>
+              <li><a href="camera.html">photo/video</a></li>
             </ul>
         </nav>
 
-        <nav className="mobile-nav-container navigation">
-              <ul id="hamburger-links">
+        <nav className="mobile-nav-container">
+              <ul id="myLinks">
                 <li><a id="nav-on" href="index.html">design</a></li>
                 <li><a href="contact.html">contact</a></li>
                 <li><a href="resume.html">resume</a></li>
                 <li><a href="camera.html">photo/video</a></li>
               </ul>
-              {/* <a href="javascript:void(0);" onClick="myFunction()">
-                <img className="scrolled" src={hamburger}></img>
-              </a> */}
         </nav>
-
     </header>
   )
 };
