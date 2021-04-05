@@ -2,6 +2,7 @@ import React,{useEffect} from 'react';
 import '../style/style.css';
 import '../style/App.scss';
 import hamburger from '../images/icons/nav-mob.svg';
+import {Link} from 'react-router-dom';
 
 const Navbar=() => {
     
@@ -27,7 +28,7 @@ const Navbar=() => {
 
   function myFunction() {
     var x = document.getElementById("myLinks");
-    if (x.style.display !="none") {
+    if (x.style.display !=="none") {
       x.style.display = "none";
     } else {
       x.style.display = "flex";
@@ -37,26 +38,40 @@ const Navbar=() => {
   return (
     <header className={x.join(" ")}>
         <div className="logo">
-          <a>
-            <img onClick={myFunction} id="hamburger-cta" src={hamburger} alt="Logo" title="Logo" />
-          </a>
+          <img onClick={myFunction} id="hamburger-cta" src={hamburger} alt="Logo" title="Logo" />
         </div>
 
         <nav className="desktop-nav-container">
             <ul>
-              <li><a id="nav-on" href="index.html">design</a></li>
-              <li><a href="contact.html">contact</a></li>
-              <li><a href="resume.html">resume</a></li>
-              <li><a href="camera.html">photo/video</a></li>
+              {/* <Link to="/Design"> */}
+                <li><a href="index.html" id="nav-on">design</a></li>
+              {/* </Link> */}
+              {/* <Link to="/Contact"> */}
+                <li><a href="contact.html">contact</a></li>
+              {/* </Link> */}
+              {/* <Link to="/Contact"> */}
+                <li><a href="contact.html">resume</a></li>
+              {/* </Link> */}
+              {/* <Link to="/Contact"> */}
+                <li><a href="contact.html">photo/video</a></li>
+              {/* // </Link>   */}
             </ul>
         </nav>
 
         <nav className="mobile-nav-container">
               <ul id="myLinks">
-                <li><a id="nav-on" href="index.html">design</a></li>
-                <li><a href="contact.html">contact</a></li>
-                <li><a href="resume.html">resume</a></li>
-                <li><a href="camera.html">photo/video</a></li>
+                {/* <Link to="/Design"> */}
+                  <li><a href="index.html" id="nav-on">design</a></li>
+                {/* </Link> */}
+                {/* <Link to="/Contact"> */}
+                  <li><a href="contact.html">contact</a></li>
+                {/* </Link> */}
+                {/* <Link to="/Contact"> */}
+                  <li><a href="contact.html">resume</a></li>
+                {/* // </Link> */}
+                {/* <Link to="/Contact"> */}
+                  <li><a href="contact.html">photo/video</a></li>
+                {/* // </Link>   */}
               </ul>
         </nav>
     </header>
